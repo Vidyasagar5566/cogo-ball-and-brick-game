@@ -166,4 +166,4 @@ function draw(){
     y +=dy; 
 }
 
-setInterval(draw, 7)
+setInterval(draw, 10)
