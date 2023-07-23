@@ -156,10 +156,10 @@ function draw(){
     }
     //Make paddle move
     if(rightPressed && paddleX <canvas.width-paddleWidth){
-        paddleX += 4;
+        paddleX += 3;
     }
     else if(leftPressed && paddleX > 0){
-        paddleX -= 4;
+        paddleX -= 3;
     }
     
     x +=dx; 
