@@ -4,8 +4,8 @@ let ctx = canvas.getContext('2d');
 let ballRadius = 10;
 let x = canvas.width/2;
 let y = canvas.height - 30;
-let dx = 2;
-let dy = -2;
+let dx = 1;
+let dy = -1;
 //create the paddle
 let paddleHeight = 12;
 let paddleWidth = 52;
@@ -15,7 +15,7 @@ let paddleX = (canvas.width-paddleWidth)/2;
 let rightPressed=false;
 let leftPressed=false;
 
-let brickRowCount = 6;
+let brickRowCount = 5;
 let brickColumnCount = 7;
 let brickWidth = 72;
 let brickHeight = 24;
