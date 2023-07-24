@@ -4,8 +4,8 @@ let ctx = canvas.getContext('2d');
 let ballRadius = 10;
 let x = canvas.width/2;
 let y = canvas.height - 30;
-let dx = 1;
-let dy = -1;
+let dx = 2;
+let dy = -2;
 //create the paddle
 let paddleHeight = 12;
 let paddleWidth = 52;
@@ -15,7 +15,7 @@ let paddleX = (canvas.width-paddleWidth)/2;
 let rightPressed=false;
 let leftPressed=false;
 
-let brickRowCount = 5;
+let brickRowCount = 6;
 let brickColumnCount = 7;
 let brickWidth = 72;
 let brickHeight = 24;
@@ -24,6 +24,7 @@ let brickOffsetTop = 32;
 let brickOffsetLeft = 32;
 //Create variables to take score
 let score = 0;
+let lifes = 0;
 
 //Creating arrays for the bricks
 let bricks = [];
@@ -90,7 +91,7 @@ function drawBricks(){
                 bricks[c][r].y=brickY;
                 ctx.beginPath();
                 ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                ctx.fillStyle = '#8500cc';
+                ctx.fillStyle = '#' + c.toString() + r.toString() + '00cc';
                 ctx.fill();
                 ctx.closePath();
             }
@@ -101,7 +102,7 @@ function drawBricks(){
 function drawScore(){
     ctx.font = '20px monospace';
     ctx.fillStyle = 'brown';
-    ctx.fillText('score: '+ score, 8, 20); //position score at 8,20 on the x,y axis of the canvas
+    ctx.fillText('score: '+ score + "/Lifes: " + lifes, 8, 20); //position score at 8,20 on the x,y axis of the canvas
 }
 
 
@@ -146,8 +147,10 @@ function draw(){
         }
         //if no paddle hit, body of canvas is hit ==> game over
         else {
-            alert('GAME OVER!! Try again...');
-            document.location.reload();
+            lifes++;
+            alert('You Failed/One Life Was Used.');
+
+            //document.location.reload();
         }
     }
     //bottom wall
@@ -156,14 +159,14 @@ function draw(){
     }
     //Make paddle move
     if(rightPressed && paddleX <canvas.width-paddleWidth){
-        paddleX += 3;
+        paddleX += 7;
     }
     else if(leftPressed && paddleX > 0){
-        paddleX -= 3;
+        paddleX -= 7;
     }
     
     x +=dx; 
     y +=dy; 
 }
 
-setInterval(draw, 5)
+setInterval(draw, 10)
